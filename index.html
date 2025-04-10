@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Портфолио | Ваше имя</title>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+ <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+ <link rel="website icon" type="jpg/png"
+  href="https://img.icons8.com/?size=100&id=XsvEZR0h6fav&format=png&color=000000">
+ <style>
+  :root {
+   --black: #0a0a0a;
+   --white: #e0e0e0;
+   --green: #4CAF50;
+   --gray: #1f1f1f;
+   --dark-gray: #121212;
+  }
+
+  * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Segoe UI', sans-serif;
+  }
+
+  body {
+   background: var(--dark-gray);
+   color: var(--white);
+  }
+
+  /* Header */
+  header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 1.5rem 5%;
+   background: var(--black);
+   background: rgba(0, 0, 0, 0.35);
+   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+   backdrop-filter: blur(20px);
+   -webkit-backdrop-filter: blur(20px);
+   border-radius: 0 0 50px 50px;
+   border: 1px solid rgba(7, 252, 3, 0.18);
+   position: fixed;
+   width: 100%;
+   top: 0;
+   z-index: 1000;
+   animation: fadeDown 1s ease;
+  }
+
+  .logo {
+   font-size: 1.8rem;
+   font-weight: 700;
+   color: var(--green);
+   text-transform: uppercase;
+   letter-spacing: 2px;
+  }
+
+  nav {
+   flex: 0 1 auto;
+   display: flex;
+   gap: 15px;
+   flex-wrap: wrap;
+  }
+
+  nav a {
+   text-decoration: none;
+   color: var(--white);
+   font-weight: 500;
+   transition: 0.3s;
+   position: relative;
+  }
+
+  nav a::after {
+   content: '';
+   position: absolute;
+   bottom: -5px;
+   left: 0;
+   width: 0;
+   height: 2px;
+   background: var(--green);
+   transition: 0.3s;
+  }
+
+  nav a:hover::after {
+   width: 100%;
+  }
+
+  /* Hero Section */
+  .hero {
+   padding: 15rem 5% 5rem;
+   display: flex;
+   align-items: center;
+   gap: 4rem;
+   min-height: 100vh;
+   animation: fadeUp 1s ease;
+  }
+
+  .hero-img {
+   width: 350px;
+   height: 350px;
+   border-radius: 50%;
+   object-fit: cover;
+   border: 5px solid var(--green);
+   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+   box-shadow: 0 8px 32px 0 rgba(8, 132, 4, 0.37);
+   backdrop-filter: blur(20px);
+   -webkit-backdrop-filter: blur(20px);
+  }
+
+  .hero-content h1 {
+   font-size: 3.5rem;
+   margin-bottom: 1rem;
+   color: var(--white);
+  }
+
+  .hero-content p {
+   font-size: 1.2rem;
+   line-height: 1.6;
+   color: var(--white);
+   max-width: 600px;
+   opacity: 0.9;
+  }
+
+  /* Skills Section */
+  .skills {
+   padding: 5rem 5%;
+   background: var(--black);
+  }
+
+  .section-title {
+   text-align: center;
+   font-size: 2.5rem;
+   margin-bottom: 3rem;
+   color: var(--green);
+  }
+
+  .skills-grid {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 2rem;
+   margin-top: 3rem;
+  }
+
+  .skill-item {
+   background: var(--gray);
+   padding: 2rem;
+   border-radius: 10px;
+   text-align: center;
+   transition: 0.3s;
+   background: rgba(0, 0, 0, 0);
+   box-shadow: 0 8px 32px 0 rgba(8, 132, 4, 0.37);
+   backdrop-filter: blur(20px);
+   -webkit-backdrop-filter: blur(20px);
+   border-radius: 50px;
+   border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .skill-item:hover {
+   transform: translateY(-10px);
+  }
+
+  .skill-progress {
+   width: 150px;
+   height: 150px;
+   margin: 1rem auto;
+   position: relative;
+  }
+
+  .progress-circle {
+   transform: rotate(-90deg);
+   width: 100%;
+   height: 100%;
+  }
+
+  .progress-circle circle {
+   fill: none;
+   stroke-width: 6;
+   stroke-linecap: round;
+  }
+
+  .progress-circle .bg {
+   stroke: var(--dark-gray);
+  }
+
+  .progress-circle .progress {
+   stroke: var(--green);
+   stroke-dasharray: 472;
+   stroke-dashoffset: 472;
+   animation: progress 2s ease-out forwards;
+  }
+
+  /* Projects Section */
+  .projects {
+   padding: 5rem 5%;
+   background: var(--dark-gray);
+  }
+
+  .projects-grid {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 2rem;
+   margin-top: 3rem;
+  }
+
+  .project-card {
+   background: var(--gray);
+   border-radius: 10px;
+   overflow: hidden;
+   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+   transition: 0.3s;
+   position: relative;
+   border: 1px solid var(--green);
+   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+   box-shadow: 0 8px 32px 0 rgba(8, 132, 4, 0.37);
+   backdrop-filter: blur(20px);
+   -webkit-backdrop-filter: blur(20px);
+  }
+
+  .project-card:hover {
+   transform: translateY(-10px);
+  }
+
+  .project-image {
+   width: 100%;
+   height: 250px;
+   object-fit: cover;
+  }
+
+  .project-info {
+   padding: 1.5rem;
+  }
+
+  /* Certificates Section */
+  .certificates {
+   padding: 5rem 5%;
+   background: var(--black);
+  }
+
+  .certificates-grid {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 2rem;
+   margin-top: 3rem;
+  }
+
+  .certificate-card {
+   background: var(--gray);
+   border-radius: 10px;
+   overflow: hidden;
+   transition: 0.3s;
+   position: relative;
+  }
+
+  .certificate-overlay {
+   position: absolute;
+   bottom: -100%;
+   left: 0;
+   width: 100%;
+   padding: 1.5rem;
+   background: rgba(0, 0, 0, 0.8);
+   transition: 0.5s ease;
+  }
+
+  .certificate-card:hover .certificate-overlay {
+   bottom: 0;
+  }
+
+  .certificate-image {
+   width: 100%;
+   height: 300px;
+   object-fit: cover;
+  }
+
+  /* Contact Section */
+  .contact {
+   padding: 5rem 5%;
+   background: var(--dark-gray);
+  }
+
+  .contact-form {
+   max-width: 600px;
+   margin: 2rem auto;
+  }
+
+  .form-group {
+   margin-bottom: 1.5rem;
+  }
+
+  input,
+  textarea {
+   width: 100%;
+   padding: 1rem;
+   background: var(--gray);
+   border: 2px solid var(--black);
+   border-radius: 5px;
+   color: var(--white);
+   transition: 0.3s;
+  }
+
+  input:focus,
+  textarea:focus {
+   border-color: var(--green);
+   outline: none;
+  }
+
+  button {
+   background: var(--green);
+   color: var(--white);
+   padding: 1rem 2rem;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: 0.3s;
+   font-weight: bold;
+  }
+
+  button:hover {
+   background: #45a049;
+   transform: translateY(-2px);
+  }
+
+  .contact-form {
+   position: relative;
+   overflow: hidden;
+  }
+
+  .form-group {
+   margin-bottom: 1.5rem;
+   animation: slideIn 0.5s ease forwards;
+  }
+
+  @keyframes slideIn {
+   from {
+    opacity: 0;
+    transform: translateX(-50px);
+   }
+
+   to {
+    opacity: 1;
+    transform: translateX(0);
+   }
+  }
+
+  button {
+   position: relative;
+   overflow: hidden;
+   transition: 0.3s;
+  }
+
+  button::after {
+   content: '✉️';
+   position: absolute;
+   right: -30px;
+   transition: 0.3s;
+  }
+
+  button:hover::after {
+   right: 15px;
+  }
+
+  /* Footer */
+  footer {
+   padding: 3rem 5%;
+   background: var(--black);
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+  }
+
+  /* Анимации */
+  @keyframes fadeUp {
+   from {
+    opacity: 0;
+    transform: translateY(50px);
+   }
+
+   to {
+    opacity: 1;
+    transform: translateY(0);
+   }
+  }
+
+  @keyframes fadeDown {
+   from {
+    opacity: 0;
+    transform: translateY(-50px);
+   }
+
+   to {
+    opacity: 1;
+    transform: translateY(0);
+   }
+  }
+
+  @keyframes progress {
+   from {
+    stroke-dashoffset: 472;
+   }
+
+   to {
+    stroke-dashoffset: var(--dashoffset);
+   }
+  }
+
+  .scroll-animation {
+   opacity: 0;
+   transform: translateY(50px);
+   transition: 1s ease;
+  }
+
+  .scroll-animation.active {
+   opacity: 1;
+   transform: translateY(0);
+  }
+
+  /* Адаптивность */
+  @media (max-width: 768px) {
+   .hero {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 10rem;
+   }
+
+   .skills-grid,
+   .projects-grid,
+   .certificates-grid {
+    grid-template-columns: 1fr;
+   }
+
+   nav {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: var(--black);
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    transform: translateY(-150%);
+    transition: transform 0.3s ease;
+    z-index: 999;
+   }
+
+   nav.active {
+    transform: translateY(0);
+   }
+
+   nav a {
+    padding: 10px 0;
+   }
+  }
+
+  footer {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   flex-wrap: wrap;
+   padding: 20px;
+   gap: 15px;
+  }
+
+  .logo {
+   flex: 0 1 auto;
+  }
+
+  .socal {
+   display: flex;
+   justify-content: center;
+   gap: 20px;
+   flex: 1 1 100%;
+   order: 2;
+  }
+
+  @media (min-width: 768px) {
+   .socal {
+    flex: 0 1 auto;
+    order: 0;
+   }
+
+   nav {
+    justify-content: flex-end;
+   }
+  }
+
+  /* Опциональные стили для иконок */
+  .icons {
+   font-size: 24px;
+   color: #fff;
+   transition: opacity 0.3s ease;
+   transition: all .3s ease-in;
+  }
+
+  .icons:hover {
+   color: #4CAF50;
+   transition: all .3s ease-in;
+  }
+
+  .a-blank {
+   color: #fff;
+   text-decoration: none;
+  }
+
+  /* Стили для бургер-меню */
+  .mobile-menu {
+   display: none;
+   font-size: 24px;
+   cursor: pointer;
+   color: var(--white);
+  }
+
+  @media (max-width: 768px) {
+   .mobile-menu {
+    display: block;
+   }
+
+   nav {
+    display: none;
+   }
+
+   nav.active {
+    display: flex;
+   }
+  }
+ </style>
+</head>
+
+<body>
+ <header>
+  <div class="logo">DEV</div>
+  <nav>
+   <a href="#about">Обо мне</a>
+   <a href="#skills">Навыки</a>
+   <a href="#projects">Проекты</a>
+   <a href="#certificates">Сертификаты</a>
+   <a href="#contact">Контакты</a>
+  </nav>
+  <div class="mobile-menu">
+   <i class='bx bx-menu'></i>
+  </div>
+ </header>
+
+ <section class="hero" id="about">
+  <img src="https://284baef4-3d14-4ca5-8247-4811f0d6b14b.selstorage.ru/flow-1743871388208.png" alt="Ваше фото"
+   class="hero-img">
+  <div class="hero-content">
+   <h1>Ибодиллоев Дамир</h1>
+   <p>Начинающий Full-stack разработчик с фокусом на современные веб-технологии</p>
+  </div>
+ </section>
+
+ <!-- Секция навыков -->
+ <section class="skills" id="skills">
+  <h2 class="section-title scroll-animation">Навыки</h2>
+  <div class="skills-grid">
+   <!-- HTML -->
+   <div class="skill-item scroll-animation">
+    <div class="skill-progress">
+     <svg class="progress-circle">
+      <circle class="bg" cx="75" cy="75" r="70"></circle>
+      <circle class="progress" cx="75" cy="75" r="70" style="--dashoffset: calc(472 - (472 * 0.9));"></circle>
+     </svg>
+    </div>
+    <h3>HTML 90%</h3>
+   </div>
+
+   <!-- CSS -->
+   <div class="skill-item scroll-animation">
+    <div class="skill-progress">
+     <svg class="progress-circle">
+      <circle class="bg" cx="75" cy="75" r="70"></circle>
+      <circle class="progress" cx="75" cy="75" r="70" style="--dashoffset: calc(472 - (472 * 0.5));"></circle>
+     </svg>
+    </div>
+    <h3>CSS 60%</h3>
+   </div>
+
+   <!-- JavaScript -->
+   <div class="skill-item scroll-animation">
+    <div class="skill-progress">
+     <svg class="progress-circle">
+      <circle class="bg" cx="75" cy="75" r="70"></circle>
+      <circle class="progress" cx="75" cy="75" r="70" style="--dashoffset: calc(472 - (472 * 0.3));"></circle>
+     </svg>
+    </div>
+    <h3>JS 30%</h3>
+   </div>
+  </div>
+ </section>
+
+ <section class="projects" id="projects">
+  <h2 class="section-title scroll-animation">Проекты</h2>
+  <a href="https://8z0n56.mimo.run/home.html#services" class="a-blank" target="_blank">
+   <div class="projects-grid">
+    <div class="project-card scroll-animation">
+     <img src="https://284baef4-3d14-4ca5-8247-4811f0d6b14b.selstorage.ru/flow-1742587029153.png" alt="Проект 1"
+      class="project-image">
+     <div class="project-info">
+      <h3> Muzhoz</h3>
+      <p>Бизнес сайт</p>
+     </div>
+    </div>
+  </a>
+
+  <div class="project-card scroll-animation">
+   <img src="https://284baef4-3d14-4ca5-8247-4811f0d6b14b.selstorage.ru/flow-1742584930459.png" alt="Проект 1"
+    class="project-image">
+   <div class="project-info">
+    <h3>Nike</h3>
+    <p>Бизнес сайт</p>
+   </div>
+  </div>
+
+  <div class="project-card scroll-animation">
+   <img src="https://284baef4-3d14-4ca5-8247-4811f0d6b14b.selstorage.ru/flow-1743870730371.png" alt="Проект 1"
+    class="project-image">
+   <div class="project-info">
+    <h3>KFC</h3>
+    <p>Ресторан быстрого питания</p>
+   </div>
+  </div>
+  <!-- Добавьте остальные проекты -->
+  </div>
+
+
+ </section>
+
+ <!-- В секции сертификатов -->
+ <section class="certificates" id="certificates">
+  <h2 class="section-title scroll-animation">Сертификаты</h2>
+  <div class="certificates-grid">
+   <div class="certificate-card scroll-animation">
+    <img
+     src="https://sun9-65.userapi.com/impg/Yi5o6kpIMK9E1_VMeyLztXPvv94CTkSbVA1qMA/O4sd7rWu_RY.jpg?size=1754x1238&quality=95&sign=5ac23c1571a6ec5eaac37621ebc0311a&type=album"
+     alt="Сертификат Веб-разработка" class="certificate-image">
+   </div>
+
+   <div class="certificate-card scroll-animation">
+    <img
+     src="https://sun9-18.userapi.com/impg/82nbFtMlFNDE3WbMcHWQBpkgq47lnBW8hiijBg/0-PpaL_jcuU.jpg?size=1754x1238&quality=95&sign=795b654d5a9de7f0d9107818bdfec78c&type=album"
+     alt="Сертификат CSS Advanced" class="certificate-image">
+   </div>
+
+   <div class="certificate-card scroll-animation">
+    <img
+     src="https://sun9-39.userapi.com/impg/gKCPGXEwRAlY9IFjSKKNo7JJhFcPqy_pYJYWSA/as90Zn1JROA.jpg?size=1281x598&quality=95&sign=f1c77712fb4f5ba24283a59b92fcbf3f&type=album"
+     alt="Сертификат JavaScript Basics" class="certificate-image">
+   </div>
+  </div>
+ </section>
+
+ <section class="contact" id="contact">
+  <h2 class="section-title scroll-animation">Контакты</h2>
+  <form class="contact-form">
+   <div class="form-group">
+    <input type="text" name="name" placeholder="Ваше имя" required>
+   </div>
+   <div class="form-group">
+    <input type="email" name="email" placeholder="Ваш Email" required>
+   </div>
+   <div class="form-group">
+    <textarea name="message" rows="5" placeholder="Ваше сообщение" required></textarea>
+   </div>
+   <button type="submit">Отправить сообщение</button>
+  </form>
+ </section>
+
+ <footer>
+  <div class="logo">DEV</div>
+
+  <script
+   language="javascript">document.write(unescape('%20%20%3C%64%69%76%20%63%6C%61%73%73%3D%22%73%6F%63%61%6C%22%3E%0A%20%20%20%3C%61%20%68%72%65%66%3D%22%68%74%74%70%73%3A%2F%2F%74%2E%6D%65%2F%57%65%62%5F%64%65%76%69%74%22%20%74%61%72%67%65%74%3D%22%5F%62%6C%61%6E%6B%22%3E%3C%69%20%63%6C%61%73%73%3D%27%62%78%20%62%78%6C%2D%74%65%6C%65%67%72%61%6D%20%69%63%6F%6E%73%27%3E%3C%2F%69%3E%3C%2F%61%3E%0A%20%20%20%3C%61%20%68%72%65%66%3D%22%68%74%74%70%73%3A%2F%2F%76%6B%2E%63%6F%6D%2F%69%64%38%36%36%35%35%36%33%33%39%22%20%74%61%72%67%65%74%3D%22%5F%62%6C%61%6E%6B%22%3E%3C%69%20%63%6C%61%73%73%3D%27%62%78%20%62%78%6C%2D%76%6B%20%69%63%6F%6E%73%27%3E%3C%2F%69%3E%3C%2F%61%3E%0A%20%20%20%3C%61%20%68%72%65%66%3D%22%68%74%74%70%73%3A%2F%2F%67%69%74%68%75%62%2E%63%6F%6D%2F%44%65%76%69%74%32%30%32%35%22%20%74%61%72%67%65%74%3D%22%5F%62%6C%61%6E%6B%22%3E%3C%69%20%63%6C%61%73%73%3D%27%62%78%20%62%78%6C%2D%67%69%74%68%75%62%20%69%63%6F%6E%73%27%3E%3C%2F%69%3E%3C%2F%61%3E%0A%20%20%3C%2F%64%69%76%3E'))</script>
+
+  <nav>
+   <a href="#about">Обо мне</a>
+   <a href="#skills">Навыки</a>
+   <a href="#projects">Проекты</a>
+   <a href="#certificates">Сертификаты</a>
+   <a href="#contact">Контакты</a>
+  </nav>
+ </footer>
+
+ <script>
+  const _0x21fb8 = _0x1aff; (function (_0x498d31, _0x1d1f13) { const _0x1b68f7 = _0x1aff, _0x41ee7d = _0x498d31(); while (!![]) { try { const _0x88d4e6 = -parseInt(_0x1b68f7(0x12d)) / 0x1 * (parseInt(_0x1b68f7(0x14f)) / 0x2) + parseInt(_0x1b68f7(0x11f)) / 0x3 * (-parseInt(_0x1b68f7(0x13e)) / 0x4) + -parseInt(_0x1b68f7(0x125)) / 0x5 + -parseInt(_0x1b68f7(0x148)) / 0x6 + parseInt(_0x1b68f7(0x156)) / 0x7 + -parseInt(_0x1b68f7(0x152)) / 0x8 * (-parseInt(_0x1b68f7(0x14a)) / 0x9) + parseInt(_0x1b68f7(0x139)) / 0xa * (parseInt(_0x1b68f7(0x15e)) / 0xb); if (_0x88d4e6 === _0x1d1f13) break; else _0x41ee7d['push'](_0x41ee7d['shift']()); } catch (_0x25da8d) { _0x41ee7d['push'](_0x41ee7d['shift']()); } } }(_0x91c3, 0x65fce), document[_0x21fb8(0x14b)](_0x21fb8(0x146))['forEach'](_0x790f71 => { const _0x911471 = _0x21fb8; _0x790f71[_0x911471(0x144)](_0x911471(0x13f), function (_0x5e6e22) { const _0x124c11 = _0x911471; _0x5e6e22[_0x124c11(0x159)](); const _0xa53f1a = document[_0x124c11(0x138)](this[_0x124c11(0x11d)](_0x124c11(0x13a))); _0xa53f1a[_0x124c11(0x133)]({ 'behavior': _0x124c11(0x11b), 'block': _0x124c11(0x131) }), window[_0x124c11(0x13d)](_0x124c11(0x153))['matches'] && (document[_0x124c11(0x138)]('nav')[_0x124c11(0x123)][_0x124c11(0x158)]('active'), document[_0x124c11(0x138)](_0x124c11(0x149))[_0x124c11(0x123)][_0x124c11(0x158)](_0x124c11(0x119))); }); })); const observer = new IntersectionObserver(_0x3b2af1 => { const _0x4812b5 = _0x21fb8; _0x3b2af1[_0x4812b5(0x150)](_0x1f88bd => { const _0x5414ba = _0x4812b5; _0x1f88bd['isIntersecting'] && _0x1f88bd[_0x5414ba(0x147)]['classList'][_0x5414ba(0x12f)](_0x5414ba(0x119)); }); }, { 'threshold': 0.1 }); document[_0x21fb8(0x14b)](_0x21fb8(0x120))['forEach'](_0x5dc365 => { const _0x455a9e = _0x21fb8; observer[_0x455a9e(0x15a)](_0x5dc365); }); function _0x91c3() { const _0x50227d = ['classList', '\x0aСообщение:\x20', '238955OECjsG', 'error', 'nextElementSibling', '.progress-circle', 'Сообщение\x20успешно\x20отправлено!', 'style', '.progress', 'nav', '2FvPDpC', 'baseVal', 'add', 'load', 'start', '.contact-form', 'scrollIntoView', 'innerHTML', 'getItem', 'floor', 'button[type=\x22submit\x22]', 'querySelector', '10090970pzoiON', 'href', 'message', 'disabled', 'matchMedia', '8DKHQCl', 'click', 'Ошибка\x20при\x20отправке:\x20', 'reset', 'padStart', 'lastSubmit', 'addEventListener', 'now', 'a[href^=\x22#\x22]', 'target', '2923248EEkztp', '.mobile-menu', '108hXEone', 'querySelectorAll', '7754950637', 'toggle', 'https://api.telegram.org/bot', '614414JrpINW', 'forEach', 'email', '266720BtEeXF', '(max-width:\x20768px)', 'name', '\x0aEmail:\x20', '4177502QUzWwY', 'Новое\x20сообщение\x20с\x20сайта:\x0aИмя:\x20', 'remove', 'preventDefault', 'observe', 'Ошибка\x20отправки', 'parentNode', 'get', '11RoGXpl', 'Пожалуйста,\x20подождите\x2010\x20минут\x20перед\x20повторной\x20отправкой', 'Ошибка:', 'toString', 'active', '7587106335:AAEIhAcAdUinWdrZpmtEUlBUeaki6A8HN3E', 'smooth', 'Повторная\x20отправка\x20через\x20', 'getAttribute', 'strokeDasharray', '658212lOJYSC', '.scroll-animation', 'setItem', 'Отправить\x20сообщение']; _0x91c3 = function () { return _0x50227d; }; return _0x91c3(); } const BOT_TOKEN = _0x21fb8(0x11a), CHAT_ID = _0x21fb8(0x14c), LIMIT_TIME = 0xa * 0x3c * 0x3e8, checkTimeLimit = () => { const _0x247dd3 = _0x21fb8, _0x175ea4 = localStorage[_0x247dd3(0x135)](_0x247dd3(0x143)); if (!_0x175ea4) return !![]; return Date[_0x247dd3(0x145)]() - _0x175ea4 > LIMIT_TIME; }, updateSubmitTime = () => { const _0x2ea19e = _0x21fb8; localStorage[_0x2ea19e(0x121)]('lastSubmit', Date['now']()); }, form = document[_0x21fb8(0x138)](_0x21fb8(0x132)), submitBtn = form[_0x21fb8(0x138)](_0x21fb8(0x137)), updateButtonState = () => { const _0x306c90 = _0x21fb8, _0x39ff40 = localStorage[_0x306c90(0x135)](_0x306c90(0x143)); if (!_0x39ff40) return; const _0x5d11f3 = LIMIT_TIME - (Date[_0x306c90(0x145)]() - _0x39ff40); if (_0x5d11f3 > 0x0) { submitBtn[_0x306c90(0x13c)] = !![]; const _0x51f5e9 = Math[_0x306c90(0x136)](_0x5d11f3 / 0xea60), _0x1c292c = Math[_0x306c90(0x136)](_0x5d11f3 % 0xea60 / 0x3e8); submitBtn[_0x306c90(0x134)] = _0x306c90(0x11c) + _0x51f5e9 + ':' + _0x1c292c[_0x306c90(0x118)]()[_0x306c90(0x142)](0x2, '0'), setTimeout(updateButtonState, 0x3e8); } else submitBtn['disabled'] = ![], submitBtn['innerHTML'] = 'Отправить\x20сообщение'; }; function _0x1aff(_0x1e307a, _0x24dd65) { const _0x91c39a = _0x91c3(); return _0x1aff = function (_0x1aff2a, _0x145fe9) { _0x1aff2a = _0x1aff2a - 0x116; let _0x4d5d45 = _0x91c39a[_0x1aff2a]; return _0x4d5d45; }, _0x1aff(_0x1e307a, _0x24dd65); } form[_0x21fb8(0x144)]('submit', async _0x1d06b2 => { const _0x44c21b = _0x21fb8; _0x1d06b2[_0x44c21b(0x159)](); if (!checkTimeLimit()) { alert(_0x44c21b(0x116)); return; } const _0x3be3d9 = new FormData(form), _0x2be87c = _0x44c21b(0x157) + _0x3be3d9['get'](_0x44c21b(0x154)) + _0x44c21b(0x155) + _0x3be3d9['get'](_0x44c21b(0x151)) + _0x44c21b(0x124) + _0x3be3d9[_0x44c21b(0x15d)]('message'); try { submitBtn[_0x44c21b(0x13c)] = !![], submitBtn[_0x44c21b(0x134)] = 'Отправка...'; const _0x14f20a = await fetch(_0x44c21b(0x14e) + BOT_TOKEN + '/sendMessage?chat_id=' + CHAT_ID + '&text=' + encodeURIComponent(_0x2be87c)); if (!_0x14f20a['ok']) throw new Error(_0x44c21b(0x15b)); alert(_0x44c21b(0x129)), form[_0x44c21b(0x141)](), updateSubmitTime(), updateButtonState(); } catch (_0x1f7239) { console[_0x44c21b(0x126)](_0x44c21b(0x117), _0x1f7239), alert(_0x44c21b(0x140) + _0x1f7239[_0x44c21b(0x13b)]); } finally { submitBtn[_0x44c21b(0x13c)] = ![], submitBtn[_0x44c21b(0x134)] = _0x44c21b(0x122); } }), document[_0x21fb8(0x138)](_0x21fb8(0x149))[_0x21fb8(0x144)](_0x21fb8(0x13f), function () { const _0x27cb87 = _0x21fb8, _0x4133bd = document[_0x27cb87(0x138)](_0x27cb87(0x12c)); _0x4133bd[_0x27cb87(0x123)][_0x27cb87(0x14d)](_0x27cb87(0x119)), this[_0x27cb87(0x123)][_0x27cb87(0x14d)](_0x27cb87(0x119)); }), document[_0x21fb8(0x14b)](_0x21fb8(0x128))[_0x21fb8(0x150)](_0x318f05 => { const _0xa8e8a2 = _0x21fb8, _0x48eb3e = _0x318f05[_0xa8e8a2(0x138)](_0xa8e8a2(0x12b)), _0x3fbb77 = _0x48eb3e['r'][_0xa8e8a2(0x12e)]['value'], _0x2775e5 = 0x2 * Math['PI'] * _0x3fbb77; _0x48eb3e[_0xa8e8a2(0x12a)][_0xa8e8a2(0x11e)] = _0x2775e5, _0x48eb3e[_0xa8e8a2(0x12a)]['strokeDashoffset'] = _0x2775e5 - _0x2775e5 * parseFloat(_0x48eb3e[_0xa8e8a2(0x15c)][_0xa8e8a2(0x127)]['textContent']) / 0x64; }), window[_0x21fb8(0x144)](_0x21fb8(0x130), () => { updateButtonState(); });
+ </script>
+</body>
+
+</html>
